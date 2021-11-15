@@ -21,6 +21,7 @@ public class VarastoTest {
     public void setUp() {
         varasto = new Varasto(10);
         varastoAlkusaldolla = new Varasto(10, 5);
+        
     }
 
     @Test
@@ -113,5 +114,21 @@ public class VarastoTest {
         assertEquals("saldo = 5.0, vielä tilaa 5.0", varastoAlkusaldolla.toString());
     }
         
+    @Test
+    public void konstruktoriNollaaNegatiivisenTilavuuden() {
+        testiVarasto = new Varasto(-10);
+        assertEquals(0, testiVarasto.getTilavuus(), vertailuTarkkuus);
+    }
 
+    @Test
+    public void alkusaldollinenKonstruktoriNollaaNegatiivisenTilavuuden() {
+        testiVarasto = new Varasto(-10, 0);
+        assertEquals(0, testiVarasto.getTilavuus(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void alkusaldoEiVoiOllaSuurempiKuinTilavuus() {
+        testiVarasto = new Varasto(10, 11);
+        assertEquals(10, testiVarasto.getSaldo(), vertailuTarkkuus);
+    }
 }
