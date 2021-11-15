@@ -14,6 +14,7 @@ public class VarastoTest {
 
     Varasto varasto;
     Varasto varastoAlkusaldolla;
+    Varasto testiVarasto;
     double vertailuTarkkuus = 0.0001;
 
     @Before
@@ -89,5 +90,13 @@ public class VarastoTest {
         assertEquals(10, varastoAlkusaldolla.getTilavuus(), vertailuTarkkuus);
     }
 
+    @Test
+    public void negatiivinenAlkusaldoEiOleMahdollinen() {
+        testiVarasto = new Varasto(10, -1);
+        assertEquals(0, testiVarasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    
+        
 
 }
