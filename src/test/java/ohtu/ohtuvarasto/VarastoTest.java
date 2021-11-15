@@ -96,7 +96,22 @@ public class VarastoTest {
         assertEquals(0, testiVarasto.getSaldo(), vertailuTarkkuus);
     }
 
+    @Test
+    public void negatiivistaMaaraaEiVoiLisata() {
+        varastoAlkusaldolla.lisaaVarastoon(-5);
+        assertEquals(5, varastoAlkusaldolla.getSaldo(), vertailuTarkkuus);
+    }
     
+    @Test
+    public void negatiivistaMaaraaEiVoiOttaa() {
+        varastoAlkusaldolla.otaVarastosta(-5);
+        assertEquals(5, varastoAlkusaldolla.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void varastoOlioTulostuuOikein() {
+        assertEquals("saldo = 5.0, vielä tilaa 5.0", varastoAlkusaldolla.toString());
+    }
         
 
 }
